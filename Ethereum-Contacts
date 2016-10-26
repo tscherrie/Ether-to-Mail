@@ -1,0 +1,26 @@
+pragma solidity ^0.4.2;
+
+contract etherToMail {
+  //bytes32 hashedMailContact;
+
+
+  mapping (bytes32 => address) public addressOf;
+
+  //function contacts {
+  //}
+
+  function addContact(string newEmailContact) {
+    bytes32 hashedMailContact = sha3(newEmailContact);
+    addressOf[hashedMailContact] = msg.sender;
+  }
+
+  function lookupAddressOf (string EmailContact) returns (address ethAddress) {
+    bytes32 hashedMailContact = sha3(EmailContact);
+    ethAddress = addressOf[hashedMailContact];
+    return ethAddress;
+  }
+
+
+
+
+}
